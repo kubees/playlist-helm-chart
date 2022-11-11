@@ -13,13 +13,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
+      - name: generate Kubernetes yaml files
+        run: make template > application.yaml
       - name: Run Checkov Analysis
         uses: bridgecrewio/checkov-action@master
         id: checkov
         with:
-          directory: playlist-helm-chart/
+          file: application.yaml
           quiet: true
-          framework: helm
+          framework: kubernetes
           output_format: sarif
           output_file_path: reports/results.sarif
           download_external_modules: true
