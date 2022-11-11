@@ -16,9 +16,19 @@ microservices-umbrella-chart:
       memoryLimit: 500Mi
       memoryRequest: 500Mi
       name: playlist-api-container
-      port: 5000
+      port: 10010
     name: playlist-api
     namespace: microservices
     replicas: 1
   serviceAccount:
     name: playlist-api-sa
+
+  service:
+    name: playlist-api
+    type: ClusterIP
+    ports:
+      - protocol: TCP
+        name: http
+        port: 80
+        targetPort: 10010
+  
