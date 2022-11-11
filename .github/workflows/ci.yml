@@ -17,7 +17,7 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         id: checkov
         with:
-          directory: microservices-umbrella-chart/
+          directory: playlist-helm-chart/
           quiet: true
           framework: helm
           output_format: sarif
