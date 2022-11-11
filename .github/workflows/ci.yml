@@ -19,7 +19,7 @@ jobs:
         with:
           directory: videos-helm-chart
           quiet: true
-          framework: kubernetes
+          framework: helm
           output_format: sarif
           output_file_path: reports/results.sarif
           download_external_modules: true
