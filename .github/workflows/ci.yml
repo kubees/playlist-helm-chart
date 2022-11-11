@@ -17,9 +17,9 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         id: checkov
         with:
-          directory: microservices-umbrella-chart/
+          file: application.yaml
           quiet: true
-          framework: helm
+          framework: kubernetes
           output_format: sarif
           output_file_path: reports/results.sarif
           download_external_modules: true
