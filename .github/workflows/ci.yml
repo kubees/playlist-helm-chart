@@ -17,7 +17,7 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         id: checkov
         with:
-          file: application.yaml
+          directory: videos-helm-chart
           quiet: true
           framework: kubernetes
           output_format: sarif

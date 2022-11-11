@@ -1,9 +1,9 @@
 install:
-	helm dependency update ./playlist-helm-chart
-	helm install playlist ./playlist-helm-chart -f playlist-helm-chart/values.yaml -n microservices --create-namespace
+	helm dependency update ./videos-helm-chart
+	helm install videos-api ./videos-helm-chart -f videos-helm-chart/values.yaml -n microservices --create-namespace
 uninstall:
-	helm uninstall playlist -n microservices
+	helm uninstall videos-api -n microservices
 template:
-	helm template playlist ./playlist-helm-chart
+	helm template videos-api ./playlist-helm-chart
 dependencies:
-	helm dependency update ./playlist-helm-chart
+	helm dependency update ./videos-helm-chart
