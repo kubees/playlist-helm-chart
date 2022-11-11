@@ -13,10 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@main
-      - name: Generate Dependencies
-        run: make dependencies
-      - name: Generate Kubernetes YAML Files
-        run: make template > application.yaml
       - name: Run Checkov Analysis
         uses: bridgecrewio/checkov-action@master
         id: checkov
