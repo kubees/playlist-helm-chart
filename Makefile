@@ -5,3 +5,5 @@ uninstall:
 	helm uninstall playlist -n microservices
 template:
 	helm template playlist ./playlist-helm-chart
+dependencies:
+	helm dependency update ./playlist-helm-chart
