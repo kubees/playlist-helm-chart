@@ -17,9 +17,9 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         id: checkov
         with:
-          file: application.yaml
+          directory: playlist-helm-chart
           quiet: true
-          framework: kubernetes
+          framework: helm
           output_format: sarif
           output_file_path: reports/results.sarif
           download_external_modules: true
