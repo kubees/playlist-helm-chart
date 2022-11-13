@@ -3,16 +3,20 @@ microservices-umbrella-chart:
     container:
       cpuLimit: 1
       cpuRequest: 0.5
-      digest: sha256:d8ea43bf8dbc045df14a1b6b58c4927f9df3f67ff952fe5edb571cc8f9192674
+      digest: sha256:be8343285e8a6e9aed9a0df5d711107fb9c5a207e3686ccce7c892dd4353eff2
       env:
         - name: ENVIRONMENT
           value: DEBUG
         - name: REDIS_HOST
-          value: playlists-db
+          value: redis-master.databases
         - name: REDIS_PORT
           value: "6379"
-      healthPath: /
-      image: aimvector/service-mesh
+        - name: VIDEOS_API_HOST
+          value: "videos-api.microservices"
+        - name: VIDEOS_API_PORT
+          value: "10010"
+      healthPath: /healthz
+      image: ahmedgrati/playlist-ms
       memoryLimit: 500Mi
       memoryRequest: 500Mi
       name: playlist-api-container
