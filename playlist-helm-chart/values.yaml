@@ -1,9 +1,11 @@
+global:
+  namespace: microservices
 microservices-umbrella-chart:
   deployment:
     initContainer:
       name: data-seed
       image: ahmedgrati/data-seed-job
-      digest: sha256:85b6fd8502bc3a4bd2f47868f25ac00a5835d42a751166cec40fadb37951bc6c
+      digest: sha256:5ffd38163485b189e8824c01a61f174a118c9c9555c618728f2be85e2a32b025
       env:
         - name: MICROSERVICE
           value: playlist
@@ -14,7 +16,8 @@ microservices-umbrella-chart:
     container:
       cpuLimit: 1
       cpuRequest: 0.5
-      digest: sha256:be8343285e8a6e9aed9a0df5d711107fb9c5a207e3686ccce7c892dd4353eff2
+      image: ahmedgrati/playlist-ms
+      digest: sha256:17e039422b15810a01286525266598d1eaa3c06ee4225516ce738c5be96b8e43
       env:
         - name: ENVIRONMENT
           value: DEBUG
@@ -27,7 +30,6 @@ microservices-umbrella-chart:
         - name: VIDEOS_API_PORT
           value: "10010"
       healthPath: /healthz
-      image: ahmedgrati/playlist-ms
       memoryLimit: 500Mi
       memoryRequest: 500Mi
       name: playlist-api-container
