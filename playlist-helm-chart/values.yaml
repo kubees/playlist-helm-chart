@@ -11,12 +11,22 @@ microservices-umbrella-chart:
       cpuLimit: 1
       cpuRequest: 0.5
       image: ahmedgrati/playlist-ms
-      digest: sha256:17e039422b15810a01286525266598d1eaa3c06ee4225516ce738c5be96b8e43
-      healthPath: /healthz
+      digest: sha256:0af6fec3b25cc26075f626646a8972f199e9854a9d1c7bad2fba4c457d441e06
+      probe:
+        readinessProbe:
+          port: 10010
+          path: /healthz
+        livenessProbe:
+          port: 10010
+          path: /healthz
       memoryLimit: 500Mi
       memoryRequest: 500Mi
       name: playlist-api-container
-      port: 10010
+      ports:
+        - name: application
+          port: 10010
+        - name: metrics
+          port: 8000
     name: playlist-api
     namespace: microservices
     replicas: 1
@@ -31,6 +41,10 @@ microservices-umbrella-chart:
         name: http
         port: 80
         targetPort: 10010
+      - protocol: TCP
+        name: metrics
+        port: 8000
+        targetPort: 8000
   
   configmap:
     name: playlist-env
@@ -47,3 +61,8 @@ microservices-umbrella-chart:
       MICROSERVICE: playlist
       REDIS_HOST: redis-master.databases
       REDIS_PORT: 6379
+  monitoring:
+    enabled: true
+    interval: 20s
+    targetPort: metrics
+    path: /
