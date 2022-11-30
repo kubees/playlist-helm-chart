@@ -45,7 +45,7 @@ microservices-umbrella-chart:
         name: metrics
         port: 8000
         targetPort: 8000
-  
+
   configmap:
     name: playlist-env
     data:
