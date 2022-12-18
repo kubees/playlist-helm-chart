@@ -11,7 +11,7 @@ microservices-umbrella-chart:
       cpuLimit: 1
       cpuRequest: 0.5
       image: ahmedgrati/playlist-ms
-      digest: sha256:0af6fec3b25cc26075f626646a8972f199e9854a9d1c7bad2fba4c457d441e06
+      digest: sha256:642239cd1ce82bb518420d2ced2552e517c0a4016815c0a810f2c6b352b39ebe
       probe:
         readinessProbe:
           port: 10010
@@ -54,6 +54,7 @@ microservices-umbrella-chart:
       REDIS_PORT: 6379
       VIDEOS_API_HOST: videos-api.microservices
       VIDEOS_API_PORT: 10010
+      JAEGER_ENDPOINT: http://jaeger-collector.monitoring:14268/api/traces
 
   initConfigMap:
     name: data-seed-env
