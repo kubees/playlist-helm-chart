@@ -11,7 +11,7 @@ microservices-umbrella-chart:
       cpuLimit: 1
       cpuRequest: 0.5
       image: ahmedgrati/playlist-ms
-      digest: sha256:642239cd1ce82bb518420d2ced2552e517c0a4016815c0a810f2c6b352b39ebe
+      digest: sha256:3354c19f808d7f43a6af8ea334daaad2f261555efd946a562de6c55689ca3268
       probe:
         readinessProbe:
           port: 10010
